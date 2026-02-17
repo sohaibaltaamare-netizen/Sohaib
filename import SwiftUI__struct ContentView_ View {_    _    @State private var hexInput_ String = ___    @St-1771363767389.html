@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out;
+        }
+        .color-card {
+            transition: all 0.3s ease;
+        }
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .color-picker {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen">
+    <div id="app" class="max-w-4xl mx-auto p-4 sm:p-6">
+        <!-- Header -->
+        <header class="text-center mb-10 mt-6">
+            <h1 class="text-4xl font-bold text-white mb-2">ASSI ADV</h1>
+            <p class="text-gray-400">Convert between HEX, RGB, and CMYK color formats</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="bg-gray-900 rounded-2xl shadow-xl p-6 mb-8 transition-all duration-300 hover:shadow-2xl">
+            <!-- HEX Conversion Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">HEX</span>
+                    Convert HEX to RGB & CMYK
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input 
+                        type="text" 
+                        id="hexInput" 
+                        placeholder="Enter HEX (e.g. FF5733)" 
+                        class="flex-1 px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all bg-gray-800 text-white"
+                    >
+                    <button 
+                        onclick="convertHex()"
+                        class="px-6 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+                    >
+                        Convert HEX → RGB & CMYK
+                    </button>
+                </div>
+            </section>
+
+            <!-- RGB Conversion Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">RGB</span>
+                    Convert RGB to HEX & CMYK
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input 
+                        type="number" 
+                        id="red" 
+                        placeholder="R" 
+                        min="0" 
+                        max="255" 
+                        class="w-full sm:w-24 px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all bg-gray-800 text-white"
+                    >
+                    <input 
+                        type="number" 
+                        id="green" 
+                        placeholder="G" 
+                        min="0" 
+                        max="255" 
+                        class="w-full sm:w-24 px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all bg-gray-800 text-white"
+                    >
+                    <input 
+                        type="number" 
+                        id="blue" 
+                        placeholder="B" 
+                        min="0" 
+                        max="255" 
+                        class="w-full sm:w-24 px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all bg-gray-800 text-white"
+                    >
+                    <button 
+                        onclick="convertRGB()"
+                        class="px-6 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+                    >
+                        Convert RGB → HEX & CMYK
+                    </button>
+                </div>
+            </section>
+
+            <!-- Color Picker Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">Picker</span>
+                    Choose Color
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input 
+                        type="color" 
+                        id="colorPicker" 
+                        class="color-picker"
+                        value="#FF5733"
+                    >
+                    <button 
+                        onclick="pickColor()"
+                        class="px-6 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+                    >
+                        Apply Selected Color
+                    </button>
+                </div>
+            </section>
+
+            <!-- RAL Color Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">RAL</span>
+                    RAL Color Lookup
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input 
+                        type="text" 
+                        id="ralInput" 
+                        placeholder="Enter HEX, RGB or CMYK value to get RAL" 
+                        class="flex-1 px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all bg-gray-800 text-white"
+                    >
+                    <button 
+                        onclick="lookupRAL()"
+                        class="px-6 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+                    >
+                        Find RAL Equivalent
+                    </button>
+                </div>
+            </section>
+
+            <!-- Color Preview Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">Preview</span>
+                    Color Preview
+                </h2>
+                <div id="colorPreview" class="p-6 rounded-lg border border-gray-700 flex items-center justify-center min-h-[120px]">
+                    <p class="text-gray-500 italic">Preview will appear here after conversion</p>
+                </div>
+            </section>
+
+            <!-- CMYK Display -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">CMYK</span>
+                    Converted Color Values
+                </h2>
+                <div id="cmykDisplay" class="p-4 bg-gray-800 rounded-lg border border-gray-700 min-h-[60px] flex items-center justify-center">
+                    <p class="text-gray-500 italic">CMYK values will appear here after conversion</p>
+                </div>
+            </section>
+
+            <!-- RAL Results Display -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">RAL Values</span>
+                    RAL Values After Conversion
+                </h2>
+                <div id="ralResults" class="p-4 bg-gray-800 rounded-lg border border-gray-700 min-h-[60px] flex items-center justify-center">
+                    <p class="text-gray-500 italic">RAL values will appear here after conversion</p>
+                </div>
+            </section>
+
+            <!-- Save Color Section -->
+            <section class="mb-10">
+                <button 
+                    onclick="saveColor()"
+                    class="px-6 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg w-full sm:w-auto"
+                >
+                    Save Current Color
+                </button>
+            </section>
+
+            <!-- Saved Colors Section -->
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-200 mb-4 flex items-center">
+                    <span class="bg-gray-700 text-gray-300 rounded-lg px-3 py-1 mr-2">Saved</span>
+                    Saved Colors
+                </h2>
+                <div id="savedColorsList" class="space-y-3">
+                    <p class="text-gray-500 italic">No colors saved yet</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm">
+            <p>Color Converter Tool • Supports HEX, RGB, CMYK and RAL conversions</p>
+            <p class="mt-2 text-xs">Developed by Sohaib Shaalan</p>
+        </footer>
+    </div>
+
+    <script>
+        // State variables
+        let hexInput = '';
+        let red = '';
+        let green = '';
+        let blue = '';
+        let savedColors = [];
+
+        // RAL color database (simplified)
+        const ralDatabase = {
+            '3020': { hex: 'E84C3D', rgb: [232, 76, 61], name: 'Red' },
+            '3030': { hex: 'F7931E', rgb: [247, 147, 30], name: 'Orange' },
+            '3040': { hex: 'FFCD00', rgb: [255, 205, 0], name: 'Yellow' },
+            '3050': { hex: '20A150', rgb: [32, 161, 80], name: 'Green' },
+            '3060': { hex: '0072CE', rgb: [0, 114, 206], name: 'Blue' },
+            '3070': { hex: '82329A', rgb: [130, 50, 154], name: 'Purple' },
+            '3080': { hex: '000000', rgb: [0, 0, 0], name: 'Black' },
+            '3090': { hex: 'FFFFFF', rgb: [255, 255, 255], name: 'White' },
+            '3100': { hex: 'B0B0B0', rgb: [176, 176, 176], name: 'Gray' },
+            '3110': { hex: 'CC7700', rgb: [204, 119, 0], name: 'Brown' }
+        };
+
+        // DOM Elements
+        const hexInputEl = document.getElementById('hexInput');
+        const redEl = document.getElementById('red');
+        const greenEl = document.getElementById('green');
+        const blueEl = document.getElementById('blue');
+        const ralInputEl = document.getElementById('ralInput');
+        const cmykDisplay = document.getElementById('cmykDisplay');
+        const savedColorsList = document.getElementById('savedColorsList');
+        const colorPreview = document.getElementById('colorPreview');
+        const colorPicker = document.getElementById('colorPicker');
+        const ralResults = document.getElementById('ralResults');
+
+        // Function to find nearest RAL equivalent
+        function findNearestRAL(hexColor) {
+            // Convert HEX to RGB
+            const r = parseInt(hexColor.substring(0, 2), 16);
+            const g = parseInt(hexColor.substring(2, 4), 16);
+            const b = parseInt(hexColor.substring(4, 6), 16);
+            
+            let closestRAL = null;
+            let minDistance = Infinity;
+            
+            for (const [ralNumber, data] of Object.entries(ralDatabase)) {
+                const [dr, dg, db] = data.rgb;
+                const distance = Math.sqrt(
+                    Math.pow(r - dr, 2) +
+                    Math.pow(g - dg, 2) +
+                    Math.pow(b - db, 2)
+                );
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestRAL = ralNumber;
+                }
+            }
+            
+            return closestRAL;
+        }
+
+        // Convert HEX to RGB and CMYK
+        function convertHex() {
+            hexInput = hexInputEl.value.trim();
+            
+            // Remove '#' if present
+            let hex = hexInput.replace('#', '');
+            
+            if (hex.length !== 6) {
+                alert('Please enter a valid 6-digit HEX code');
+                return;
+            }
+            
+            try {
+                const int = parseInt(hex, 16);
+                red = ((int >> 16) & 0xFF).toString();
+                green = ((int >> 8) & 0xFF).toString();
+                blue = (int & 0xFF).toString();
+                
+                // Update input fields
+                redEl.value = red;
+                greenEl.value = green;
+                blueEl.value = blue;
+                
+                // Update color preview
+                updateColorPreview();
+                
+                // Display CMYK
+                displayCMYK();
+                
+                // Look up RAL
+                lookupRALFromInput();
+                
+                // Show success message
+                showNotification('HEX converted successfully!');
+            } catch (error) {
+                alert('Invalid HEX value');
+            }
+        }
+
+        // Convert RGB to HEX and CMYK
+        function convertRGB() {
+            red = redEl.value.trim();
+            green = greenEl.value.trim();
+            blue = blueEl.value.trim();
+            
+            // Validate inputs
+            if (!red || !green || !blue) {
+                alert('Please fill all RGB values');
+                return;
+            }
+            
+            const r = parseInt(red);
+            const g = parseInt(green);
+            const b = parseInt(blue);
+            
+            if (isNaN(r) || isNaN(g) || isNaN(b) || 
+                r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+                alert('Please enter valid RGB values (0-255)');
+                return;
+            }
+            
+            // Convert to HEX
+            hexInput = ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0').toUpperCase();
+            hexInputEl.value = hexInput;
+            
+            // Update color preview
+            updateColorPreview();
+            
+            // Display CMYK
+            displayCMYK();
+            
+            // Look up RAL
+            lookupRALFromInput();
+            
+            // Show success message
+            showNotification('RGB converted successfully!');
+        }
+
+        // Pick color from picker
+        function pickColor() {
+            const selectedColor = colorPicker.value;
+            const hex = selectedColor.substring(1).toUpperCase(); // Remove # and uppercase
+            
+            // Set values
+            hexInput = hex;
+            red = parseInt(hex.substring(0, 2), 16).toString();
+            green = parseInt(hex.substring(2, 4), 16).toString();
+            blue = parseInt(hex.substring(4, 6), 16).toString();
+            
+            // Update UI
+            hexInputEl.value = hex;
+            redEl.value = red;
+            greenEl.value = green;
+            blueEl.value = blue;
+            
+            // Update color preview
+            updateColorPreview();
+            
+            // Display CMYK
+            displayCMYK();
+            
+            // Look up RAL
+            lookupRALFromInput();
+            
+            // Show success message
+            showNotification('Color selected successfully!');
+        }
+
+        // Look up RAL color based on input (HEX, RGB or CMYK)
+        function lookupRAL() {
+            const input = ralInputEl.value.trim();
+            
+            if (!input) {
+                alert('Please enter a color value');
+                return;
+            }
+            
+            // Try to parse as HEX
+            if (/^[0-9A-F]{6}$/i.test(input)) {
+                const ralNumber = findNearestRAL(input);
+                if (ralNumber) {
+                    const colorData = ralDatabase[ralNumber];
+                    hexInput = colorData.hex;
+                    red = colorData.rgb[0].toString();
+                    green = colorData.rgb[1].toString();
+                    blue = colorData.rgb[2].toString();
+                    
+                    // Update UI
+                    hexInputEl.value = hexInput;
+                    redEl.value = red;
+                    greenEl.value = green;
+                    blueEl.value = blue;
+                    
+                    // Update color preview
+                    updateColorPreview();
+                    
+                    // Display CMYK
+                    displayCMYK();
+                    
+                    // Show success message
+                    showNotification(`RAL ${ralNumber} (${colorData.name}) found!`);
+                    return;
+                }
+            }
+            
+            // Try to parse as RGB values
+            if (/^\d+,\s*\d+,\s*\d+$/.test(input)) {
+                const [r, g, b] = input.split(',').map(Number);
+                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                    const hex = ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0').toUpperCase();
+                    const ralNumber = findNearestRAL(hex);
+                    if (ralNumber) {
+                        const colorData = ralDatabase[ralNumber];
+                        hexInput = colorData.hex;
+                        red = colorData.rgb[0].toString();
+                        green = colorData.rgb[1].toString();
+                        blue = colorData.rgb[2].toString();
+                        
+                        // Update UI
+                        hexInputEl.value = hexInput;
+                        redEl.value = red;
+                        greenEl.value = green;
+                        blueEl.value = blue;
+                        
+                        // Update color preview
+                        updateColorPreview();
+                        
+                        // Display CMYK
+                        displayCMYK();
+                        
+                        // Show success message
+                        showNotification(`RAL ${ralNumber} (${colorData.name}) found!`);
+                        return;
+                    }
+                }
+            }
+            
+            // Try to parse as CMYK values
+            if (/^\d+,\s*\d+,\s*\d+,\s*\d+$/.test(input)) {
+                const [c, m, y, k] = input.split(',').map(Number);
+                // Convert CMYK to RGB using simplified formula
+                const r = Math.round(255 * (1 - c/100) * (1 - k/100));
+                const g = Math.round(255 * (1 - m/100) * (1 - k/100));
+                const b = Math.round(255 * (1 - y/100) * (1 - k/100));
+                
+                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                    const hex = ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0').toUpperCase();
+                    const ralNumber = findNearestRAL(hex);
+                    if (ralNumber) {
+                        const colorData = ralDatabase[ralNumber];
+                        hexInput = colorData.hex;
+                        red = colorData.rgb[0].toString();
+                        green = colorData.rgb[1].toString();
+                        blue = colorData.rgb[2].toString();
+                        
+                        // Update UI
+                        hexInputEl.value = hexInput;
+                        redEl.value = red;
+                        greenEl.value = green;
+                        blueEl.value = blue;
+                        
+                        // Update color preview
+                        updateColorPreview();
+                        
+                        // Display CMYK
+                        displayCMYK();
+                        
+                        // Show success message
+                        showNotification(`RAL ${ralNumber} (${colorData.name}) found!`);
+                        return;
+                    }
+                }
+            }
+            
+            // If no match found
+            alert(`No matching RAL color found for "${input}"`);
+        }
+
+        // Look up RAL when HEX, RGB or CMYK is input
+        function lookupRALFromInput() {
+            // Only process if we have actual conversion values
+            if (!hexInput || !red || !green || !blue) return;
+            
+            // Try to parse as HEX
+            if (/^[0-9A-F]{6}$/i.test(hexInput)) {
+                const ralNumber = findNearestRAL(hexInput);
+                if (ralNumber) {
+                    const colorData = ralDatabase[ralNumber];
+                    // Display RAL results
+                    ralResults.innerHTML = `<p class="text-lg font-semibold text-orange-400">RAL: ${ralNumber} - ${colorData.name}</p>`;
+                    return;
+                }
+            }
+            
+            // Clear RAL results if no match
+            ralResults.innerHTML = '<p class="text-gray-500 italic">RAL values will appear here after conversion</p>';
+        }
+
+        // Update color preview
+        function updateColorPreview() {
+            if (!hexInput) {
+                colorPreview.innerHTML = '<p class="text-gray-500 italic">Preview will appear here after conversion</p>';
+                return;
+            }
+            
+            colorPreview.innerHTML = `
+                <div class="flex flex-col items-center">
+                    <div class="w-32 h-32 rounded-lg border border-gray-600 mb-3" style="background-color: #${hexInput};"></div>
+                    <p class="font-mono text-lg">${hexInput}</p>
+                </div>
+            `;
+        }
+
+        // Calculate and display CMYK
+        function displayCMYK() {
+            const r = parseFloat(red);
+            const g = parseFloat(green);
+            const b = parseFloat(blue);
+            
+            if (isNaN(r) || isNaN(g) || isNaN(b)) {
+                cmykDisplay.innerHTML = '<p class="text-gray-500 italic">Please enter valid RGB values</p>';
+                return;
+            }
+            
+            const rP = r / 255;
+            const gP = g / 255;
+            const bP = b / 255;
+            
+            const k = 1 - Math.max(rP, gP, bP);
+            
+            let c, m, y;
+            
+            if (k === 1) {
+                c = m = y = 0;
+            } else {
+                c = (1 - rP - k) / (1 - k);
+                m = (1 - gP - k) / (1 - k);
+                y = (1 - bP - k) / (1 - k);
+            }
+            
+            const cmyk = `${Math.round(c * 100)}, ${Math.round(m * 100)}, ${Math.round(y * 100)}, ${Math.round(k * 100)}`;
+            
+            cmykDisplay.innerHTML = `<p class="text-lg font-semibold text-gray-300">CMYK: ${cmyk}</p>`;
+        }
+
+        // Save current color
+        function saveColor() {
+            if (!hexInput || !red || !green || !blue) {
+                alert('No color to save. Please convert a color first.');
+                return;
+            }
+            
+            const saved = `HEX: ${hexInput} | RGB: ${red},${green},${blue}`;
+            savedColors.push(saved);
+            
+            // Update saved colors list
+            updateSavedColorsList();
+            
+            // Show success message
+            showNotification('Color saved successfully!');
+        }
+
+        // Update saved colors list in UI
+        function updateSavedColorsList() {
+            if (savedColors.length === 0) {
+                savedColorsList.innerHTML = '<p class="text-gray-500 italic">No colors saved yet</p>';
+                return;
+            }
+            
+            savedColorsList.innerHTML = savedColors.map(color => 
+                `<div class="p-3 bg-gray-800 rounded-lg border border-gray-700 flex justify-between items-center color-card">
+                    <span>${color}</span>
+                    <button onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-400 text-sm font-medium">Remove</button>
+                </div>`
+            ).join('');
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fadeIn';
+            notification.textContent = message;
+            
+            // Add to document
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize
+        updateSavedColorsList();
+        
+        // Add automatic RAL lookup when typing HEX input
+        hexInputEl.addEventListener('input', function() {
+            if (this.value.length === 6 && /^[0-9A-F]{6}$/i.test(this.value)) {
+                lookupRALFromInput();
+            }
+        });
+        
+        // Add automatic RAL lookup when typing RGB input
+        redEl.addEventListener('input', function() {
+            if (redEl.value && greenEl.value && blueEl.value) {
+                lookupRALFromInput();
+            }
+        });
+        greenEl.addEventListener('input', function() {
+            if (redEl.value && greenEl.value && blueEl.value) {
+                lookupRALFromInput();
+            }
+        });
+        blueEl.addEventListener('input', function() {
+            if (redEl.value && greenEl.value && blueEl.value) {
+                lookupRALFromInput();
+            }
+        });
+    </script>
+</body>
+</html>
