@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>العاصي للدعاية والإعلان وصناعة الكارمات</title>
+  
+  <!-- خط تجوال من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- مكتبة الأيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- مكتبة Tailwind CSS للتنسيق السريع -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8bc53f',
+            'primary-dark': '#76a933',
+            dark: '#0f172a',
+            secondary: '#1e293b'
+          },
+          fontFamily: {
+            sans: ['Tajawal', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: 'Tajawal', sans-serif;
+    }
+    
+    /* تنسيقات مخصصة لزر وقسم الـ GPS */
+    .contact-location-box {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 15px;
+      color: #ffffff;
+    }
+
+    .location-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .location-icon {
+      font-size: 1.5rem;
+      color: #8bc53f;
+    }
+
+    .btn-gps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #8bc53f;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gps:hover {
+      background-color: #76a933;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 197, 63, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- الهيدر (Header) -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- اللوجو واسم الشركة -->
+      <div class="flex items-center gap-3">
+        <img src="logo.jpg" alt="العاصي للدعاية والإعلان" class="h-12 w-auto object-contain">
+        <a href="#" class="text-xl font-black text-primary">
+          العاصي <span class="text-xs font-normal text-slate-500">للدعاية والإعلان</span>
+        </a>
+      </div>
+
+      <!-- قائمة التنقل -->
+      <nav class="main-nav">
+        <ul class="flex items-center gap-6 font-bold text-slate-700 text-sm md:text-base">
+          <li><a href="#" class="hover:text-primary transition">الرئيسية</a></li>
+          <li><a href="#services" class="hover:text-primary transition">خدماتنا</a></li>
+          <li><a href="#portfolio" class="hover:text-primary transition">معرض الأعمال</a></li>
+          <li><a href="#contact" class="hover:text-primary transition">اطلب عرض سعر</a></li>
+        </ul>
+      </nav>
+
+      <!-- زر اتصل بنا -->
+      <div>
+        <a href="tel:+970598222800" class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-lg font-bold flex items-center gap-2 text-sm transition">
+          <i class="fa-solid fa-phone-flip"></i> اتصل بنا
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي (Hero Section) - صورة خلفية خاصة بتصنيع الحروف الكارمات المضيئة 3D -->
+  <section class="relative min-h-[550px] flex items-center justify-center text-center text-white px-4 py-24 bg-cover bg-center" 
+           style="background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1600&auto=format&fit=crop');">
+    <div class="max-w-4xl mx-auto space-y-6">
+      <span class="inline-block bg-amber-500/20 text-amber-400 border border-amber-400/30 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold">
+        رواد صناعة الكارمات واللوحات الإعلانية
+      </span>
+      <h1 class="text-3xl md:text-5xl font-black leading-tight">
+        نُحول هويتك التجارية إلى واقع<br>ملموس ويجذب الأنظار
+      </h1>
+      <p class="text-slate-300 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">
+        متخصصون في تصنيع الكارمات المضيئة، الحروف البارزة 3D، واجهات الكابوند، والطباعة والإعلانات الخارجية بأعلى معايير الجودة.
+      </p>      
+      <div class="flex flex-wrap justify-center gap-4 pt-4">
+        <a href="https://wa.me/970598222800" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2.5 shadow-lg hover:-translate-y-0.5 transition">
+          <i class="fa-brands fa-whatsapp text-xl"></i> طلب عرض سعر سريع
+        </a>
+        <a href="#portfolio" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg hover:-translate-y-0.5 transition">
+          مشاهدة الأعمال
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الإحصائيات (Stats Section) -->
+  <section class="bg-white py-12 border-b shadow-inner">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+        <h3 class="text-4xl md:text-5xl font-black text-primary">+1000</h3>
+        <p class="text-slate-600 text-sm font-bold mt-2">مشروع منجز</p>
+      </div>
+      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+        <h3 class="text-4xl md:text-5xl font-black text-primary">100%</h3>
+        <p class="text-slate-600 text-sm font-bold mt-2">جودة ومتانة المواد</p>
+      </div>
+      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+        <h3 class="text-4xl md:text-5xl font-black text-primary">+10</h3>
+        <p class="text-slate-600 text-sm font-bold mt-2">سنوات خبرة</p>
+      </div>
+      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+        <h3 class="text-4xl md:text-5xl font-black text-primary">100%</h3>
+        <p class="text-slate-600 text-sm font-bold mt-2">رضا العملاء</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الخدمات (Services Section) -->
+  <section id="services" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16 space-y-3">
+      <h2 class="text-3xl md:text-5xl font-black text-slate-900">خدماتنا المتميزة</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto">نقدم مجموعة واسعة من الخدمات الإعلانية والحلول البصرية المصممة خصيصاً لتلبية احتياجات أعمالك.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- خدمة 1 -->
+      <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-2xl transition group flex flex-col items-center text-center">
+        <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+          <i class="fa-solid fa-square-parking"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">صناعة الكارمات والحروف البارزة</h3>
+        <p class="text-slate-600 leading-relaxed text-sm">تصنيع كافة أنواع الكارمات (أكليريك، استانلس، زنكور) وحروف 3D المضيئة بأنظمة LED موفرة للطاقة ومقاومة للعوامل الجوية.</p>
+      </div>
+
+      <!-- خدمة 2 -->
+      <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-2xl transition group flex flex-col items-center text-center">
+        <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">واجهات الكابوند (Alucobond)</h3>
+        <p class="text-slate-600 leading-relaxed text-sm">تغليف واجهات الشركات والمحلات التجارية بألواح الكابوند المركبة المقاومة للحريق والحرارة بإكساء عصري أنيق.</p>
+      </div>
+
+      <!-- خدمة 3 -->
+      <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-2xl transition group flex flex-col items-center text-center">
+        <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+          <i class="fa-solid fa-print"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">الطباعة والواجهات الزجاجية</h3>
+        <p class="text-slate-600 leading-relaxed text-sm">طباعة وتركيب فليكس، بنر، ستيكر زجاج المحلات (One Way Vision)، وتغليف السيارات التجارية بوضوح ألوان عالي الدقة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم معرض الأعمال (Portfolio Section) -->
+  <section id="portfolio" class="py-20 bg-slate-100 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 space-y-3">
+        <h2 class="text-3xl md:text-5xl font-black text-slate-900">معرض الأعمال</h2>
+        <p class="text-slate-600">نماذج من مشاريعنا وتنفيذنا الميداني للعملاء</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+          <img src="caviar.jpg" alt="كارمة حروف مضيئة" class="w-full h-64 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">كارمات وحروف 3D</span>
+            <h4 class="font-bold text-xl mt-3">تركيب حروف أكليريك مضيئة</h4>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+          <img src="bpitrol.jpg" alt="واجهة محلات كابوند" class="w-full h-64 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">واجهات كابوند</span>
+            <h4 class="font-bold text-xl mt-3">إكساء واجهة متجر تجاري Alucobond</h4>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+          <img src="qqq.jpg" alt="تنفيذ وتركيب بوثات ومعارض" class="w-full h-64 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">تنفيذ وتركيب بوثات ومعارض</span>
+            <h4 class="font-bold text-xl mt-3">تنفيذ وتركيب بوثات ومعارض </h4>
+          </div>
+
+
+        </div>
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+          <img src="stkrz.jpg" alt="طباعة وستكرز" class="w-full h-64 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">طباعة وستكرز</span>
+            <h4 class="font-bold text-xl mt-3">طباعة وستكرز </h4>
+          </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#" target="_blank" class="inline-flex items-center gap-3 text-slate-800 hover:text-blue-600 font-bold text-lg transition">
+          <i class="fa-brands fa-facebook text-blue-600 text-2xl"></i> مشاهدة باقي الأعمال على صفحتنا في فيسبوك
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم طلب عرض سعر (Form Section) -->
+  <section id="contact" class="py-20 px-4 max-w-4xl mx-auto">
+    <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100">
+      
+      <div class="text-center mb-8 space-y-2">
+        <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">تواصل سريع</span>
+        <h2 class="text-3xl font-black text-slate-900">اطلب عرض سعر الآن</h2>
+        <p class="text-slate-600 text-sm md:text-base">أدخل تفاصيل مشروعك وسنقوم بالتواصل معك وتزويدك بالسعر التقريبي بأسرع وقت.</p>
+      </div>
+
+      <form id="quoteForm" action="#" method="POST" class="space-y-6">
+        
+        <!-- الاسم والهاتف -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="fullName" class="block text-sm font-bold text-slate-700 mb-2">
+              الاسم الكامل <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              required 
+              placeholder="أدخل اسمك" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition text-sm">
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-bold text-slate-700 mb-2">
+              رقم الهاتف / الواتساب <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              required 
+              dir="ltr"
+              placeholder="05x xxx xxxx" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition text-right text-sm">
+          </div>
+        </div>
+
+        <!-- نوع الخدمة والمدينة -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="serviceType" class="block text-sm font-bold text-slate-700 mb-2">
+              نوع الخدمة المطلوبة <span class="text-red-500">*</span>
+            </label>
+            <select 
+              id="serviceType" 
+              name="serviceType" 
+              required 
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition text-sm bg-white text-slate-700">
+              <option value="" disabled selected>اختر الخدمة...</option>
+              <option value="تصنيع كارمة / حروف بارزة">تصنيع كارمة / حروف بارزة</option>
+              <option value="واجهة كابوند">تغليف واجهة كابوند (Alucobond)</option>
+              <option value="طباعة بنر / فليكس">طباعة بنر / فليكس / ستيكر</option>
+              <option value="تغليف سيارات">تغليف سيارات تجارية</option>
+              <option value="أخرى">خدمات دعاية وإعلان أخرى</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="city" class="block text-sm font-bold text-slate-700 mb-2">
+              المدينة / العنوان
+            </label>
+            <input 
+              type="text" 
+              id="city" 
+              name="city" 
+              placeholder="أدخل العنوان / المدينة" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition text-sm">
+          </div>
+        </div>
+
+        <!-- تفاصيل الطلب -->
+        <div>
+          <label for="details" class="block text-sm font-bold text-slate-700 mb-2">
+            تفاصيل الطلب أو المقاسات التقريبية
+          </label>
+          <textarea 
+            id="details" 
+            name="details" 
+            rows="4" 
+            placeholder="اكتب التفاصيل هنا..." 
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition text-sm"></textarea>
+        </div>
+
+        <!-- أزرار الإرسال -->
+        <div class="pt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <button 
+            type="submit" 
+            class="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-4 rounded-xl text-base transition shadow-md flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> إرسال الطلب
+          </button>
+
+          <!-- خيار إرسال مباشر عبر الواتساب -->
+          <button 
+            type="button" 
+            onclick="sendToWhatsApp()" 
+            class="w-full bg-green-500 hover:bg-green-600 text-white font-black py-4 rounded-xl text-base transition shadow-md flex items-center justify-center gap-2">
+            <i class="fa-brands fa-whatsapp text-xl"></i> إرسال عبر الواتساب
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- الفوتر (Footer) -->
+  <footer class="bg-dark text-slate-400 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+      
+      <!-- عن الشركة -->
+      <div>
+        <h3 class="text-white font-bold mb-4 text-xl">شركة العاصي للدعاية والإعلان</h3>
+        <p class="text-sm leading-relaxed">
+          حلول إعلانية متكاملة وصناعة كافة أنواع الكارمات واللوحات الخارجية بإتقان وسرعة في التنفيذ.
+        </p>
+      </div>
+
+      <!-- معلومات التواصل -->
+      <div>
+        <h4 class="text-white font-bold mb-4 text-lg">تواصل معنا</h4>
+        <ul class="space-y-2.5 text-sm mb-4">
+          <li><i class="fa-solid fa-phone text-primary ml-2"></i> [أدخل رقم الهاتف]</li>
+          <li><i class="fa-brands fa-whatsapp text-green-500 ml-2"></i> [أدخل رقم الواتساب]</li>
+          <li><i class="fa-solid fa-location-dot text-primary ml-2"></i> [أدخل العنوان / المدينة]</li>
+        </ul>
+
+        <!-- صندوق موقع GPS -->
+        <div class="contact-location-box">
+          <div class="location-info">
+            <i class="fa-solid fa-location-dot location-icon"></i>
+            <div>
+              <h5 class="font-bold text-white text-sm">موقعنا على الخريطة</h5>
+              <p class="text-xs text-slate-400">انقر للانتقال المباشر وتحديد المسار عبر GPS</p>
+            </div>
+          </div>
+
+          <a href="https://www.google.com/maps" target="_blank" class="btn-gps">
+            <i class="fa-solid fa-diamond-turn-right"></i> التوجيه عبر GPS (Google Maps)
+          </a>
+        </div>
+      </div>
+
+      <!-- تابعنا -->
+      <div>
+        <h4 class="text-white font-bold mb-4 text-lg">تابعنا</h4>
+        <a href="#" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-3 rounded-xl text-sm transition border border-slate-700">
+          <i class="fa-brands fa-facebook text-blue-500 text-xl"></i> صفحة الفيسبوك الرسمية
+        </a>
+      </div>
+
+    </div>
+
+    <div class="text-center text-xs text-slate-500 mt-12 pt-6 border-t border-slate-800">
+      جميع الحقوق محفوظة © شركة العاصي للدعاية والإعلان 2026
+    </div>
+  </footer>
+
+  <!-- السكربت المساعد لإرسال الطلب عبر الواتساب -->
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById('fullName').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('serviceType').value;
+      const city = document.getElementById('city').value;
+      const details = document.getElementById('details').value;
+
+      if (!name || !phone || !service) {
+        alert('يرجى تعبئة الحقول الأساسية: الاسم، رقم الهاتف، ونوع الخدمة.');
+        return;
+      }
+
+      const message = `مرحباً شركة العاصي، أرغب في الحصول على عرض سعر:%0A` +
+                      `*الاسم:* ${name}%0A` +
+                      `*الهاتف:* ${phone}%0A` +
+                      `*الخدمة:* ${service}%0A` +
+                      `*المنطقة:* ${city || 'غير محدد'}%0A` +
+                      `*التفاصيل:* ${details || 'لا يوجد'}`;
+
+      window.open(`https://wa.me/?text=${message}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>

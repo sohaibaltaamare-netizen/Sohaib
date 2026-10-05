@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>العاصي للدعاية والإعلان</title>
+  <!-- خط تجوال من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- أيقونات Font Awesome (للهاتف والواتساب) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    /* --- الهيدر (Header) --- */
+    .site-header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #8bc53f; /* اللون الأخضر الرئيسي */
+      text-decoration: none;
+    }
+
+    /* القائمة الرئيسية */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .main-nav a:hover {
+      color: #8bc53f;
+    }
+
+    /* قسم اللوجو والزر الأيسر */
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-img {
+      height: 45px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .btn-contact-header {
+      background-color: #8bc53f;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s;
+    }
+
+    .btn-contact-header:hover {
+      background-color: #76a933;
+    }
+
+    /* --- القسم الرئيسي (Hero Section) --- */
+    .hero-section {
+      position: relative;
+      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                  url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      padding: 60px 20px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .badge-tag {
+      background-color: rgba(217, 119, 6, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #e2e8f0;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-whatsapp {
+      background-color: #25d366;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .btn-cta-whatsapp:hover {
+      background-color: #1eb957;
+      transform: translateY(-2px);
+    }
+
+    .btn-cta-secondary {
+      background-color: #1e293b;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 1px solid #334155;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-cta-secondary:hover {
+      background-color: #334155;
+      transform: translateY(-2px);
+    }
+
+    /* تجاوب الشاشات الصغيرة */
+    @media (max-width: 900px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .main-nav ul {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الهيدر -->
+  <header class="site-header">
+    <div class="header-container">
+      
+      <!-- اسم الشركة -->
+      <div class="brand-section">
+        <a href="#" class="brand-title">العاصي <span style="font-size:0.9rem; font-weight:normal; color:#666;">للدعاية والإعلان</span></a>
+      </div>
+
+      <!-- قائمة التنقل -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">الرئيسية</a></li>
+          <li><a href="#">من نحن</a></li>
+          <li><a href="#">خدماتنا</a></li>
+          <li><a href="#">معرض الأعمال</a></li>
+          <li><a href="#">اتصل بنا</a></li>
+        </ul>
+      </nav>
+
+      <!-- اللوجو وزر اتصل بنا -->
+      <div class="header-left">
+        <!-- أضف مسار صورة اللوجو الخاص بك في src -->
+        <img src="logo.jpg" alt="assi advertising makers" class="logo-img">
+        <a href="#contact" class="btn-contact-header">
+          <i class="fa-solid fa-phone-flip"></i> اتصل بنا
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي (Hero) -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="badge-tag">رواد صناعة الكارمات واللوحات الإعلانية</span>
+      <h1 class="hero-title">نُحول هويتك التجارية إلى واقع<br>ملموس ويجذب الأنظار</h1>
+      <p class="hero-subtitle">
+        متخصصون في تصنيع الكارمات المضيئة، الحروف البارزة 3D، واجهات الكابوند،<br>
+        والطباعة والإعلانات الخارجية بأعلى معايير الجودة.
+      </p>
+      
+      <div class="hero-buttons">
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" class="btn-cta-whatsapp">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> طلب عرض سعر سريع
+        </a>
+        <a href="#portfolio" class="btn-cta-secondary">مشاهدة الأعمال</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- Stats Section -->
+    <section class="bg-white py-12 border-b shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-5xl font-extrabold text-primary">+1000</h3>
+                <p class="text-slate-600 text-sm font-medium mt-2">مشروع منجز</p>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-5xl font-extrabold text-primary">100%</h3>
+                <p class="text-slate-600 text-sm font-medium mt-2">جودة ومتانة المواد</p>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-5xl font-extrabold text-primary">+10</h3>
+                <p class="text-slate-600 text-sm font-medium mt-2">سنوات خبرة</p>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-5xl font-extrabold text-primary">100%</h3>
+                <p class="text-slate-600 text-sm font-medium mt-2">رضا العملاء</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16 space-y-3">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900">خدماتنا المتميزة</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">نقدم مجموعة واسعة من الخدمات الإعلانية والحلول البصرية المصممة خصيصاً لتلبية احتياجات أعمالك.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 hover:shadow-2xl transition group flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:bg-primary group-hover:text-dark transition">
+                    <i class="fa-solid fa-sign"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">صناعة الكارمات والحروف البارزة</h3>
+                <p class="text-slate-600 leading-relaxed text-sm">تصنيع كافة أنواع الكارمات (أكليريك، استانلس، زنكور) وحروف 3D المضيئة بأنظمة LED موفرة للطاقة ومقاومة للعوامل الجوية.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 hover:shadow-2xl transition group flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:bg-primary group-hover:text-dark transition">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">واجهات الكابوند (Alucobond)</h3>
+                <p class="text-slate-600 leading-relaxed text-sm">تغليف واجهات الشركات والمحلات التجارية بألواح الكابوند المركبة المقاومة للحريق والحرارة بإكساء عصري أنيق.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 hover:shadow-2xl transition group flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:bg-primary group-hover:text-dark transition">
+                    <i class="fa-solid fa-paint-roller"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">الطباعة والواجهات الزجاجية</h3>
+                <p class="text-slate-600 leading-relaxed text-sm">طباعة وتركيب فليكس، بنر، ستيكر زجاج المحلات (One Way Vision)، وتغليف السيارات التجارية بوضوح ألوان عالي الدقة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-slate-100 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 space-y-3">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900">معرض الأعمال (Portfolio Gallery)</h2>
+                <p class="text-slate-600">نماذج من مشاريعنا وتنفيذنا الميداني للعملاء</p>
+            </div>
+
+            <!-- Gallery Grid with Unique Images -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1. 3D Letters -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" alt="كارمة حروف مضيئة" class="w-full h-64 object-cover">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">كارمات وحروف 3D</span>
+                        <h4 class="font-bold text-xl mt-3">تركيب حروف أكليريك مضيئة</h4>
+                    </div>
+                </div>
+
+                <!-- 2. Alucobond Cladding -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e2b4dbc19?q=80&w=600&auto=format&fit=crop" alt="واجهة محلات كابوند" class="w-full h-64 object-cover">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">واجهات كابوند</span>
+                        <h4 class="font-bold text-xl mt-3">إكساء واجهة متجر تجاري Alucobond</h4>
+                    </div>
+                </div>
+
+                <!-- 3. Glass Sticker -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600&auto=format&fit=crop" alt="ستيكر زجاج واجهة" class="w-full h-64 object-cover">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">طباعة وستيكر زجاج</span>
+                        <h4 class="font-bold text-xl mt-3">طباعة وتركيب ستيكر زجاج One Way</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://www.facebook.com/Assi.adv" target="_blank" class="inline-flex items-center gap-3 text-secondary font-bold hover:text-blue-600 text-lg transition">
+                    <i class="fa-brands fa-facebook text-2xl"></i> مشاهدة باقي الأعمال على صفحتنا في فيسبوك
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Quote Form Section -->
+    <! - - section id="contact" class="py-20 px-4 max-w-4xl mx-auto">
+        <div class="bg-white p-10 md:p-14 rounded-3xl shadow-xl border border-slate-100">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black text-slate-900">اطلب عرض سعر الآن</h2>
+                <p class="text-slate-600 mt-3">أدخل تفاصيل طلبك وسنرد عليك بأسرع وقت ممكن</p>
+            </div>
+
+            <form action="#" method="POST" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">First name</label>
+                        <input type="text" placeholder="أدخل اسمك الأول" class="w-full px-5 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Last name</label>
+                        <input type="text" placeholder="أدخل الكنية" class="w-full px-5 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Email</label>
+                    <input type="email" placeholder="example@gmail.com" class="w-full px-5 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none transition">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Address</label>
+                    <input type="text" placeholder="العنوان التقريبي" class="w-full px-5 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">تفاصيل الطلب أو المقاسات التقريبية</label>
+                    <textarea rows="4" placeholder="اكتب تفاصيل الكارمة، المواد، أو القياسات..." class="w-full px-5 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none transition"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-secondary hover:bg-slate-600 text-white font-black py-4.5 rounded-xl text-lg transition shadow-md">
+                    إرسال الطلب
+                </button>
+            </form>
+        </div>
+    <! - - /section - - >
+
+    <!-- Footer -->
+    <footer class="bg-dark text-slate-400 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <!-- Using embedded asset_1.png in footer with gray color text as needed -->
+                <img src="logo.png" alt="Assi Advertising Makers" class="h-16 mb-6">
+                <p class="text-sm leading-relaxed">حلول إعلانية متكاملة وصناعة كافة أنواع الكارمات واللوحات الخارجية بإتقان وسرعة في التنفيذ.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">تواصل معنا</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><i class="fa-solid fa-phone text-primary ml-2.5"></i> +963 [+970598222800]</li>
+                    <li><i class="fa-brands fa-whatsapp text-green-500 ml-2.5"></i> +963 [+970598222800]</li>
+                    <li><i class="fa-solid fa-location-dot text-primary ml-2.5"></i> [ Bir Zeit, West Bank]</li>
+                </ul>
+<!-- قسم العنوان والتوجيه عبر GPS -->
+<div class="contact-location-box">
+  <div class="location-info">
+    <i class="fa-solid fa-location-dot location-icon"></i>
+    <div>
+      <h4>موقعنا على الخريطة</h4>
+      <p>اضغط على الزر أدناه للانتقال المباشر وتحديد الاتجاهات عبر GPS</p>
+    </div>
+  </div>
+
+  <a href="https://www.google.com/maps/dir/?api=1&destination=31.967850912841378, 35.20585257698682" target="_blank" class="btn-gps">
+    <i class="fa-solid fa-diamond-turn-right"></i> التوجيه عبر GPS (Google Maps)
+  </a>
+</div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">تابعنا</h4>
+                <a href="https://www.facebook.com/Assi.adv" target="_blank" class="inline-flex items-center gap-2 bg-secondary/50 hover:bg-slate-800 text-white px-5 py-3 rounded-lg text-sm transition">
+                    <i class="fa-brands fa-facebook text-blue-500 text-xl"></i> صفحة الفيسبوك الرسمية
+                </a>
+            </div>
+        </div>
+        <div class="text-center text-xs text-slate-600 mt-16 pt-8 border-t border-slate-800">
+            جميع الحقوق محفوظة © شركة العاصي للدعاية والإعلان وصناعة الكارمات 2026
+        </div>
+    </footer>
+
+</body>
+</html>
