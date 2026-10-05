@@ -418,8 +418,8 @@
             <div>
                 <h4 class="text-white font-bold mb-6 text-lg">تواصل معنا</h4>
                 <ul class="space-y-3 text-sm">
-                    <li><i class="fa-solid fa-phone text-primary ml-2.5"></i> +963 [+970598222800]</li>
-                    <li><i class="fa-brands fa-whatsapp text-green-500 ml-2.5"></i> +963 [+970598222800]</li>
+                    <li><i class="fa-solid fa-phone text-primary ml-2.5"></i>  [+970598222800]</li>
+                    <li><i class="fa-brands fa-whatsapp text-green-500 ml-2.5"></i> [+970598222800]</li>
                     <li><i class="fa-solid fa-location-dot text-primary ml-2.5"></i> [ Bir Zeit, West Bank]</li>
                 </ul>
 <!-- قسم العنوان والتوجيه عبر GPS -->
@@ -450,4 +450,27 @@
     </footer>
 
 </body>
+   <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById('fullName').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('serviceType').value;
+      const city = document.getElementById('city').value;
+      const details = document.getElementById('details').value;
+
+      if (!name || !phone || !service) {
+        alert('يرجى تعبئة الحقول الأساسية: الاسم، رقم الهاتف، ونوع الخدمة.');
+        return;
+      }
+
+      const message = `مرحباً شركة العاصي، أرغب في الحصول على عرض سعر:%0A` +
+                      `*الاسم:* ${name}%0A` +
+                      `*الهاتف:* ${phone}%0A` +
+                      `*الخدمة:* ${service}%0A` +
+                      `*المنطقة:* ${city || 'غير محدد'}%0A` +
+                      `*التفاصيل:* ${details || 'لا يوجد'}`;
+
+      window.open(`https://wa.me/?text=${message}`, '_blank');
+    }
+  </script>
 </html>
