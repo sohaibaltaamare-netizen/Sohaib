@@ -410,29 +410,34 @@
   </footer>
 
   <!-- السكربت المساعد لإرسال الطلب عبر الواتساب -->
-  <script>
-    function sendToWhatsApp() {
-      const name = document.getElementById('fullName').value;
-      const phone = document.getElementById('phone').value;
-      const service = document.getElementById('serviceType').value;
-      const city = document.getElementById('city').value;
-      const details = document.getElementById('details').value;
+<script>
+  function sendToWhatsApp() {
+    const name = document.getElementById('fullName').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('serviceType').value;
+    const city = document.getElementById('city').value;
+    const details = document.getElementById('details').value;
 
-      if (!name || !phone || !service) {
-        alert('يرجى تعبئة الحقول الأساسية: الاسم، رقم الهاتف، ونوع الخدمة.');
-        return;
-      }
-
-      const message = `مرحباً شركة العاصي، أرغب في الحصول على عرض سعر:%0A` +
-                      `*الاسم:* ${name}%0A` +
-                      `*الهاتف:* ${phone}%0A` +
-                      `*الخدمة:* ${service}%0A` +
-                      `*المنطقة:* ${city || 'غير محدد'}%0A` +
-                      `*التفاصيل:* ${details || 'لا يوجد'}`;
-
-      window.open(`https://wa.me/?text=${message}`, '_blank');
+    if (!name || !phone || !service) {
+      alert('يرجى تعبئة الحقول الأساسية: الاسم، رقم الهاتف، ونوع الخدمة.');
+      return;
     }
-  </script>
+
+    const message = `
+مرحباً شركة العاصي، أرغب في الحصول على عرض سعر:
+*الاسم:* ${name}
+*الهاتف:* ${phone}
+*الخدمة:* ${service}
+*المنطقة:* ${city || 'غير محدد'}
+*التفاصيل:* ${details || 'لا يوجد'}
+`;
+
+    const whatsappNumber = '972597222800'; // بدون + وبدون فراغات
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, '_blank');
+  }
+</script>
 
 </body>
 </html>
